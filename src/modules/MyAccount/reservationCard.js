@@ -3,16 +3,18 @@ import { formatDate2, imagePath } from '../../utils/utilServices';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllReservations, removeReservation } from '../Reserve/reserveSlice';
 import { hideLoader, showLoader } from '../../components/Loader/loaderSlice';
 import { showModal } from '../../components/Modal/modalSlice';
 import RatingModal from './ratingModal';
+import { selectCurrentUser } from '../Home/sessionSlice';
 
 function ReservationCard(props) {
     const { model, location, fromDate, toDate, hasRated, bikeId, id, imageUrl } = props.data;
     // const [resStatus, setResStatus] = React.useState(''); // past, upcoming & active
     const [openRateModal, setOpenModal] = React.useState(false);
+    const currentUser = useSelector(selectCurrentUser);
 
     const dispatch = useDispatch()
 
@@ -42,7 +44,7 @@ function ReservationCard(props) {
         dispatch(showLoader());
         dispatch(removeReservation(props.data.id)).then(res => {
             dispatch(hideLoader())
-            dispatch(getAllReservations())
+            dispatch(getAllReservations(currentUser.uid))
             dispatch(showModal({
                 heading: 'Reservation cancelled!',
                 message: '',
