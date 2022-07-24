@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllBikes, removeBike, selectBikes } from './bikesSlice';
 import { hideLoader, showLoader } from '../../components/Loader/loaderSlice';
 import ViewReservationsModal from './viewReservationsModal';
+import { getUsersByRole } from '../Home/sessionSlice';
 
 export default function ManageBikes() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ export default function ManageBikes() {
 
   useEffect(() => {
     getBikes()
+    dispatch(getUsersByRole("manager"))
   }, [])
 
   const getBikes = () => {
