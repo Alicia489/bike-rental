@@ -19,7 +19,8 @@ const createReservationInCollection = async (details) => {
         location: details.location,
         color: details.color,
         imageUrl: details.imageUrl,
-        hasRated: false
+        hasRated: false,
+        userEmail: details.userEmail
     })
 };
 
