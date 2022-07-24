@@ -116,7 +116,7 @@ export default function SearchFilters(props) {
                     <TextField
                         variant="outlined"
                         id="todate"
-                        label="From"
+                        label="To"
                         type="date"
                         className="date-pick"
                         value={toDate}

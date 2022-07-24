@@ -40,7 +40,7 @@ function MyAccount() {
                         <p>Email address:</p>
                     </Grid>
                     <Grid item md={6} className="text-left">
-                        <p>a@b.com</p>
+                        <p>{currentUser.email}</p>
                     </Grid>
                     {/* <Grid item md={12} className="">
                         <Button size="large" variant="contained">Edit account details</Button>
