@@ -1,0 +1,13 @@
+$small-mobile: "only screen and (max-width: 375px) and (max-height: 665px)";
+$mobile: "only screen and (max-width: 767px)";
+$mobile-landscape: "only screen and (max-width: 767px) and (orientation: landscape)";
+$tablet: "only screen and (min-width: 768px)";
+$tablet-only: "only screen and (min-width: 768px) and (max-width: 1023px)";
+$desktop: "only screen and (min-width: 1024px)";
+$desktop-only: "only screen and (min-width: 1024px) and (max-width: 1279px)";
+$hd: "only screen and (min-width: 1280px)";
+$hd-plus: "only screen and (min-width: 1440px)";
+$full-hd: "only screen and (min-width: 1850px)";
+$quad-hd: "only screen and (min-width:2400px)";
+$u-hd: "only screen and (min-width: 3840px)";
+$zoomed-in: "only screen and (-webkit-min-device-pixel-ratio: 1.5) and (-webkit-max-device-pixel-ratio: 1.7) and (min-width: 1100px) and (max-width: 1600px)";

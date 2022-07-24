@@ -1,0 +1,122 @@
+@import "./fonts";
+@import "./colors";
+@import "./utils";
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+
+  @include mobile {
+    font-size: 14px;
+  }
+  @include tablet {
+    font-size: 11px;
+  }
+  @include desktop {
+    font-size: 13px;
+  }
+  @include hd {
+    font-size: 14px;
+  }
+  @include hdPlus {
+    font-size: 15px;
+  }
+  @include fullHd {
+    font-size: 18px;
+  }
+  @include quadHd {
+    font-size: 20px;
+  }
+  @include uHd {
+    font-size: 22px;
+  }
+}
+
+body {
+  @include open-sans-regular;
+  font-size: 16px;
+  color: #262626;
+  padding: 0;
+  margin: 0;
+}
+
+#root {
+  min-height: 100%;
+  position: relative;
+}
+
+h1 {
+  @include fontSize(40);
+  @include open-sans-semi-bold;
+}
+
+h1, h2 {
+  @include fontSize(35);
+  @include open-sans-semi-bold;
+}
+
+h3 {
+  @include fontSize(30);
+  @include open-sans-regular;
+}
+
+h4 {
+  @include fontSize(28);
+  @include open-sans-regular;
+}
+
+h5 {
+  @include fontSize(24);
+  @include open-sans-regular;
+}
+
+h6 {
+  @include fontSize(20);
+  @include open-sans-semi-bold;
+  margin: 0;
+  color: #262626;
+}
+
+.subtitle-big {
+  @include fontSize(16);
+  @include open-sans-regular;
+}
+
+.subtitle-small {
+  @include fontSize(14);
+  @include open-sans-regular;
+}
+
+button {
+  span {
+    @include fontSize(12);
+    @include open-sans-semi-bold;
+  }
+}
+
+.caption {
+  @include fontSize(14);
+  @include open-sans-semi-bold;
+  color: #262626;
+}
+
+//bike rental styles
+.w-100 {
+  width: 100%;
+}
+
+.spacing-2 {
+  margin-bottom: toRem(20) !important;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}

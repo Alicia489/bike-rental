@@ -1,0 +1,276 @@
+@import "./breakpoints";
+$base-font-size: 14;
+
+%uppercase {
+  text-transform: uppercase;
+}
+
+%pointer,
+.pointer {
+  cursor: pointer;
+}
+@mixin flex() {
+  display: flex !important;
+}
+@mixin flex-column() {
+  flex-direction: column;
+}
+@mixin align-center() {
+  align-items: center;
+}
+@mixin justify-center() {
+  justify-content: center;
+}
+@mixin justify-right() {
+  justify-content: flex-end;
+}
+@mixin justify-space-between() {
+  justify-content: space-between;
+}
+@mixin align-flex-start() {
+  align-items: flex-start;
+}
+@mixin align-flex-end() {
+  align-items: flex-end;
+}
+@mixin fontSize($size, $important: false) {
+  $imp: "";
+  @if $important {
+    $imp: !important;
+  }
+  font-size: #{$size/$base-font-size}rem #{$imp};
+}
+@mixin width($value, $important: false) {
+  $imp: "";
+  @if $important {
+    $imp: !important;
+  }
+  width: #{$value/$base-font-size}rem #{$imp};
+}
+@mixin height($value, $important: false) {
+  $imp: "";
+  @if $important {
+    $imp: !important;
+  }
+  height: #{$value/$base-font-size}rem #{$imp};
+}
+@mixin padding(
+  $value1: "",
+  $value2: "",
+  $value3: "",
+  $value4: "",
+  $important: false
+) {
+  $imp: "";
+  @if $important {
+    $imp: !important;
+  }
+  @if ($value2 == "") {
+    padding: #{$value1/$base-font-size}rem #{$imp};
+  } @else if($value3 == "") {
+    padding: #{$value1/$base-font-size}rem
+      #{$value2/$base-font-size}rem
+      #{$imp};
+  } @else if($value4 == "") {
+    padding: #{$value1/$base-font-size}rem
+      #{$value2/$base-font-size}rem
+      #{$value3/$base-font-size}rem
+      #{$imp};
+  } @else {
+    padding: #{$value1/$base-font-size}rem
+      #{$value2/$base-font-size}rem
+      #{$value3/$base-font-size}rem
+      #{$value4/$base-font-size}rem
+      #{$imp};
+  }
+}
+@mixin margin(
+  $value1: "",
+  $value2: "",
+  $value3: "",
+  $value4: "",
+  $important: false
+) {
+  $imp: "";
+  @if $important {
+    $imp: !important;
+  }
+  @if ($value2 == "") {
+    margin: #{$value1/$base-font-size}rem #{$imp};
+  } @else if($value3 == "") {
+    margin: #{$value1/$base-font-size}rem #{$value2/$base-font-size}rem #{$imp};
+  } @else if($value4 == "") {
+    margin: #{$value1/$base-font-size}rem
+      #{$value2/$base-font-size}rem
+      #{$value3/$base-font-size}rem
+      #{$imp};
+  } @else {
+    margin: #{$value1/$base-font-size}rem
+      #{$value2/$base-font-size}rem
+      #{$value3/$base-font-size}rem
+      #{$value4/$base-font-size}rem
+      #{$imp};
+  }
+}
+@mixin borderRadius(
+  $value1: "",
+  $value2: "",
+  $value3: "",
+  $value4: "",
+  $important: false
+) {
+  $imp: "";
+  @if $important {
+    $imp: !important;
+  }
+  @if ($value2 == "") {
+    border-radius: #{$value1/$base-font-size}rem #{$imp};
+  } @else if($value3 == "") {
+    border-radius: #{$value1/$base-font-size}rem
+      #{$value2/$base-font-size}rem
+      #{$imp};
+  } @else if($value4 == "") {
+    border-radius: #{$value1/$base-font-size}rem
+      #{$value2/$base-font-size}rem
+      #{$value3/$base-font-size}rem
+      #{$imp};
+  } @else {
+    border-radius: #{$value1/$base-font-size}rem
+      #{$value2/$base-font-size}rem
+      #{$value3/$base-font-size}rem
+      #{$value4/$base-font-size}rem
+      #{$imp};
+  }
+}
+@mixin letterSpacing($size, $important: false) {
+  $imp: "";
+  @if $important {
+    $imp: !important;
+  }
+  letter-spacing: #{$size/$base-font-size}rem #{$imp};
+}
+@mixin rotate($deg) {
+  transform: rotate($deg);
+  -webkit-transform: rotate($deg);
+}
+@mixin arrow() {
+  border: solid #aaaaaa;
+  border-width: 0 2px 2px 0;
+  outline: 0;
+  display: inline-block;
+  @include padding(15);
+  @extend %pointer;
+}
+
+@mixin wordWrap() {
+  word-wrap: break-word;
+}
+
+.arrow-left {
+  @include arrow;
+  @include rotate(135deg);
+}
+
+.arrow-right {
+  @include arrow;
+  @include rotate(315deg);
+}
+
+@mixin filledArrow() {
+  width: 0;
+  height: 0;
+  border-top: 1.2rem solid transparent;
+}
+
+.filled-arrow-right {
+  @include filledArrow();
+  border-bottom: 1.2rem solid transparent;
+  border-left: 1.6rem solid #e2e2e2;
+}
+
+.filled-arrow-left {
+  @include filledArrow();
+  border-bottom: 1.2rem solid transparent;
+  border-right: 1.6rem solid #e2e2e2;
+}
+
+@function toRem($size, $important: false) {
+  $imp: "";
+  @if $important {
+    $imp: !important;
+  }
+  @return #{$size/$base-font-size}rem #{$imp};
+}
+
+// mixins for responsive styling
+
+@mixin small-mobile {
+  @media #{$small-mobile} {
+    @content;
+  }
+}
+@mixin mobile {
+  @media #{$mobile} {
+    @content;
+  }
+}
+@mixin tablet {
+  @media #{$tablet} {
+    @content;
+  }
+}
+@mixin desktop {
+  @media #{$desktop} {
+    @content;
+  }
+}
+
+@mixin desktopOnly {
+  @media #{$desktop-only} {
+    @content;
+  }
+}
+
+@mixin hd {
+  @media #{$hd} {
+    @content;
+  }
+}
+@mixin hdPlus {
+  @media #{$hd-plus} {
+    @content;
+  }
+}
+@mixin fullHd {
+  @media #{$full-hd} {
+    @content;
+  }
+}
+@mixin zoomedIn {
+  @media #{$zoomed-in} {
+    @content;
+  }
+}
+
+@mixin quadHd {
+  @media #{$quad-hd} {
+    @content;
+  }
+}
+@mixin uHd {
+  @media #{$u-hd} {
+    @content;
+  }
+}
+@mixin mobileLandscape {
+  @media #{$mobile-landscape} {
+    @content;
+  }
+}
+@mixin tabletOnly {
+  @media #{$tablet-only} {
+    @content;
+  }
+}
+
+// mixins for responsive styling ends here

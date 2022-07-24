@@ -1,0 +1,17 @@
+@import "../../styles/fonts";
+@import "../../styles/colors";
+@import "../../styles/utils";
+
+.bike-listing-container {
+    @include padding(30, 0, 70)
+}
+
+.search-filters-container {
+    .date-pick {
+        width: 100%;
+    }
+
+    .pt-2 {
+        padding-bottom: toRem(20);
+    }
+}

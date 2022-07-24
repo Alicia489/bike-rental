@@ -1,56 +1,69 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import "./styles/base.scss";
+import "./styles/styles.css";
+import Header from './components/header';
+import Footer from './components/footer';
+import Loader from './components/Loader';
+import GenericModal from './components/Modal';
+import { Routes, Route, Navigate } from "react-router-dom";
+import Home from './modules/Home';
+import BikesListing from './modules/BikesListing';
+import ReserveBike from './modules/Reserve';
+import MyAccount from './modules/MyAccount';
+import ManagersDashboard from './modules/ManagersDashboard';
+import { Util } from './utils/util';
+import { useDispatch } from 'react-redux';
+import { setUserDetails } from './modules/Home/sessionSlice';
+
+const PrivateManagerWrapper = ({ children }) => {
+  if (Util.getAuthToken() && Util.getUserRole() === "manager") {
+    return children
+  }
+
+  return <Navigate to="/" replace />
+};
+
+const PrivateUserWrapper = ({ children }) => {
+  if (Util.getAuthToken() && Util.getUserRole() === "user") {
+    return children
+  }
+
+  return <Navigate to="/" replace />
+};
+
+const Public = ({ children }) => {
+  let toRoute = Util.getUserRole() === "user" ? "/bikes" : '/managers/dashboard'
+  return !Util.getAuthToken() ? children : <Navigate to={toRoute} replace />
+};
+
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (Util.getAuthToken()) {
+      dispatch(setUserDetails(Util.getUserDetails()))
+    }
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <Header />
+
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={<Public><Home /></Public>} />
+        <Route path="/bikes" element={<PrivateUserWrapper><BikesListing /></PrivateUserWrapper>} />
+        <Route path="/reserve" element={<PrivateUserWrapper><ReserveBike /></PrivateUserWrapper>} />
+        <Route path="/my-account" element={<PrivateUserWrapper><MyAccount /></PrivateUserWrapper>} />
+        <Route path="/managers/dashboard" element={<PrivateManagerWrapper><ManagersDashboard /></PrivateManagerWrapper>} />
+      </Routes>
+
+      {/* <Footer /> */}
+      <Loader />
+      <GenericModal />
     </div>
   );
 }

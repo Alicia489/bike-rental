@@ -1,0 +1,11 @@
+@import "../../styles/fonts";
+@import "../../styles/colors";
+@import "../../styles/utils";
+
+.reservation-container {
+    @include padding(70, 0);
+
+    .date-pick {
+        width: 100%;
+    }
+}

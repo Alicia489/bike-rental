@@ -1,0 +1,26 @@
+@import "../../styles/fonts";
+@import "../../styles/colors";
+@import "../../styles/utils";
+
+.my-account-container {
+    // @include padding(70, 0)
+}
+
+.reservation-card-container {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    @include padding(20, 10);
+
+    .past {
+        
+    }
+
+    .active {
+        background-color: green;
+        color: white;
+    }
+
+    .upcoming {
+        background-color: orange;
+        color: black;
+    }
+}
