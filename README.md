@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+# Getting Started with Create React App and Redux
+
+Deployed @ https://bike-rental-a7210.web.app/
+
+Sample manager credentials: 
+Email: alisamanager@mailinator.com
+Password: Jingo253!
+
 ## Available Scripts
 
 In the project directory, you can run:
