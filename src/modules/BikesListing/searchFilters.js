@@ -97,9 +97,9 @@ export default function SearchFilters(props) {
                         id="fromdate"
                         label="From"
                         type="date"
-                        inputProps={{
-                            min: formatDate("YMD", addDays(new Date(), 1))
-                        }}
+                        // inputProps={{
+                        //     min: formatDate("YMD", addDays(new Date(), 1))
+                        // }}
                         className="date-pick"
                         value={fromDate}
                         onChange={(e) => { setFromDate(e.target.value); dispatch(setSelectedBike({ fromDate: e.target.value })) }}
@@ -120,10 +120,10 @@ export default function SearchFilters(props) {
                         type="date"
                         className="date-pick"
                         value={toDate}
-                        inputProps={{
-                            min: formatDate("YMD", addDays(new Date(fromDate), 1)),
-                            max: formatDate("YMD", addDays(new Date(fromDate), MAX_DAYS))
-                        }}
+                        // inputProps={{
+                        //     min: formatDate("YMD", addDays(new Date(fromDate), 1)),
+                        //     max: formatDate("YMD", addDays(new Date(fromDate), MAX_DAYS))
+                        // }}
                         onChange={(e) => { setToDate(e.target.value); dispatch(setSelectedBike({ toDate: e.target.value })) }}
                         InputLabelProps={{
                             shrink: true,
